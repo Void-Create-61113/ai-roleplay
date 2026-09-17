@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="A customizable AI roleplay playground with personas, characters, and scenarios." />
+  <meta name="description" content="Roleplay Realm and Realmcraft fantasy sandbox." />
   <title>Roleplay Realm</title>
   <link rel="stylesheet" href="style.css" />
 </head>
@@ -16,6 +16,7 @@
         <button class="nav-btn" data-view="characters">♙ <span>Characters</span></button>
         <button class="nav-btn" data-view="personas">◉ <span>Personas</span></button>
         <button class="nav-btn" data-view="roleplay">✦ <span>New Roleplay</span></button>
+        <button class="nav-btn" data-view="game">⚔ <span>Realmcraft</span></button>
       </nav>
       <div class="sidebar-footer"><span class="status-dot"></span> Saved locally</div>
     </aside>
@@ -31,8 +32,9 @@
           <div>
             <p class="eyebrow">YOUR STORY, YOUR RULES</p>
             <h1>Step into another world.</h1>
-            <p class="hero-copy">Create characters, build your own persona, and start an interactive roleplay.</p>
+            <p class="hero-copy">Create characters, build your own persona, start an interactive roleplay, or explore the new Realmcraft fantasy sandbox.</p>
             <button class="primary-btn" data-view="roleplay">＋ Start a roleplay</button>
+            <button class="secondary-btn" data-view="game" style="margin-left:8px">⚔ Play Realmcraft</button>
           </div>
           <div class="hero-orb">✦</div>
         </div>
@@ -61,6 +63,20 @@
             <button class="primary-btn full" id="beginRoleplay">Begin roleplay →</button>
           </div>
           <div class="tips panel"><h3>💡 Roleplay tips</h3><ul><li>Give your character a distinct voice and personality.</li><li>Add a scenario that gives the scene somewhere to go.</li><li>You can edit your creations anytime.</li><li>Your saved creations stay in this browser.</li></ul></div>
+        </div>
+      </section>
+
+      <section id="game" class="view">
+        <div class="page-heading game-heading"><div><p class="eyebrow">FANTASY SURVIVAL SANDBOX</p><h1>Realmcraft</h1><p class="hero-copy">Gather resources, explore wild biomes, craft gear, and survive the night.</p></div><button class="secondary-btn" id="newWorldBtn">↻ New world</button></div>
+        <div class="game-wrap panel">
+          <div class="game-toolbar"><div><b id="gameBiome">Meadow</b><span id="gameClock">Day 1 • Morning</span></div><div class="hearts" id="gameHearts">♥♥♥♥♥♥♥♥♥♥</div><div class="game-help">WASD move • Mouse mine/attack • 1–6 select • E craft • R eat</div></div>
+          <canvas id="gameCanvas" width="960" height="600" aria-label="Realmcraft game"></canvas>
+          <div class="game-bottom"><div id="hotbar" class="hotbar"></div><div class="game-stats" id="gameStats"></div></div>
+        </div>
+        <div class="game-panels">
+          <div class="panel game-info"><h3>⚒ Crafting</h3><div id="craftingList"></div></div>
+          <div class="panel game-info"><h3>🛡 Equipment</h3><div id="equipmentList"></div></div>
+          <div class="panel game-info"><h3>📜 Adventure</h3><p id="gameLog">Welcome to Realmcraft. Gather wood to begin!</p></div>
         </div>
       </section>
 
@@ -95,5 +111,6 @@
   </dialog>
 
   <script src="app.js"></script>
+  <script src="game.js"></script>
 </body>
 </html>
