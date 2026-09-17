@@ -1,0 +1,11 @@
+{
+  "name": "ai-roleplay",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vercel dev"
+  },
+  "dependencies": {
+    "@google/genai": "latest"
+  }
+}
