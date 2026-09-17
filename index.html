@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="A customizable AI roleplay playground with personas, characters, and scenarios." />
+  <title>Roleplay Realm</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand"><span class="brand-mark">✦</span><span>Roleplay Realm</span></div>
+      <nav>
+        <button class="nav-btn active" data-view="home">⌂ <span>Home</span></button>
+        <button class="nav-btn" data-view="characters">♙ <span>Characters</span></button>
+        <button class="nav-btn" data-view="personas">◉ <span>Personas</span></button>
+        <button class="nav-btn" data-view="roleplay">✦ <span>New Roleplay</span></button>
+      </nav>
+      <div class="sidebar-footer"><span class="status-dot"></span> Saved locally</div>
+    </aside>
+
+    <main class="main">
+      <header class="mobile-header">
+        <div class="brand"><span class="brand-mark">✦</span> Roleplay Realm</div>
+        <button id="mobileMenu" class="icon-btn" aria-label="Open menu">☰</button>
+      </header>
+
+      <section id="home" class="view active">
+        <div class="hero">
+          <div>
+            <p class="eyebrow">YOUR STORY, YOUR RULES</p>
+            <h1>Step into another world.</h1>
+            <p class="hero-copy">Create characters, build your own persona, and start an interactive roleplay.</p>
+            <button class="primary-btn" data-view="roleplay">＋ Start a roleplay</button>
+          </div>
+          <div class="hero-orb">✦</div>
+        </div>
+        <div class="section-heading"><div><p class="eyebrow">QUICK START</p><h2>Your creations</h2></div></div>
+        <div class="card-grid" id="homeCards"></div>
+      </section>
+
+      <section id="characters" class="view">
+        <div class="page-heading"><div><p class="eyebrow">CHARACTER LIBRARY</p><h1>Your Characters</h1></div><button class="primary-btn" id="newCharacterBtn">＋ New character</button></div>
+        <div class="card-grid" id="characterGrid"></div>
+      </section>
+
+      <section id="personas" class="view">
+        <div class="page-heading"><div><p class="eyebrow">WHO ARE YOU?</p><h1>Your Personas</h1></div><button class="primary-btn" id="newPersonaBtn">＋ New persona</button></div>
+        <div class="card-grid" id="personaGrid"></div>
+      </section>
+
+      <section id="roleplay" class="view">
+        <div class="page-heading"><div><p class="eyebrow">CREATE A SCENE</p><h1>New Roleplay</h1></div></div>
+        <div class="setup-layout">
+          <div class="panel setup-panel">
+            <label>Character<select id="roleplayCharacter"></select></label>
+            <label>Your persona<select id="roleplayPersona"></select></label>
+            <label>Scenario<input id="roleplayScenario" placeholder="A mysterious train arrives at midnight..." /></label>
+            <label>Opening message<textarea id="roleplayOpening" rows="5" placeholder="Write the first thing that happens in the scene."></textarea></label>
+            <button class="primary-btn full" id="beginRoleplay">Begin roleplay →</button>
+          </div>
+          <div class="tips panel"><h3>💡 Roleplay tips</h3><ul><li>Give your character a distinct voice and personality.</li><li>Add a scenario that gives the scene somewhere to go.</li><li>You can edit your creations anytime.</li><li>Your saved creations stay in this browser.</li></ul></div>
+        </div>
+      </section>
+
+      <section id="chat" class="view">
+        <div class="chat-top"><button class="back-btn" id="backToSetup">← Setup</button><div id="chatTitle"></div><button class="icon-btn" id="clearChat" title="Clear conversation">↺</button></div>
+        <div class="chat-layout">
+          <div class="chat-panel panel">
+            <div id="messages" class="messages"></div>
+            <form id="chatForm" class="composer"><textarea id="chatInput" rows="2" placeholder="Write what your character does or says..." autocomplete="off"></textarea><button class="send-btn" aria-label="Send">➤</button></form>
+            <p class="demo-note" id="connectionNote">Demo mode: connect <code>/api/chat</code> to use a real AI model.</p>
+          </div>
+          <aside class="scene-card panel" id="sceneInfo"></aside>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <dialog id="editorDialog">
+    <form method="dialog" id="editorForm" class="editor">
+      <button type="button" class="dialog-close" id="closeDialog">×</button>
+      <p class="eyebrow" id="editorEyebrow">CREATE</p><h2 id="editorTitle">New character</h2>
+      <input type="hidden" id="editorType" />
+      <label>Name<input id="fieldName" required maxlength="60" /></label>
+      <label>Avatar emoji<input id="fieldAvatar" maxlength="4" placeholder="🦊" /></label>
+      <label>Short description<textarea id="fieldDescription" rows="2" maxlength="240"></textarea></label>
+      <label>Personality<textarea id="fieldPersonality" rows="3" placeholder="Curious, sarcastic, kind..." maxlength="1000"></textarea></label>
+      <label>Appearance<textarea id="fieldAppearance" rows="2" placeholder="Optional"></textarea></label>
+      <label>Backstory<textarea id="fieldBackstory" rows="3" placeholder="Optional"></textarea></label>
+      <label>Speech style<textarea id="fieldSpeech" rows="2" placeholder="Short sentences, playful, formal, etc."></textarea></label>
+      <div class="dialog-actions"><button type="button" class="secondary-btn" id="cancelDialog">Cancel</button><button class="primary-btn" id="saveEditor">Save</button></div>
+    </form>
+  </dialog>
+
+  <script src="app.js"></script>
+</body>
+</html>
