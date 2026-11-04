@@ -3,9 +3,10 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "vercel dev"
+    "dev": "netlify dev"
   },
   "dependencies": {
-    "@google/genai": "latest"
+    "@google/genai": "latest",
+    "netlify-cli": "latest"
   }
 }
